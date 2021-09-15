@@ -1,0 +1,115 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </head>
+    <style>
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .paragraph{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            font-size: large;
+        }
+        .container{
+            display: block;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            margin: 0 auto; /* Added */
+            float: none; /* Added */
+            margin-bottom: 10px; /* Added */
+        }
+
+        .form-select{
+            margin: 0 auto;
+            float: none;
+            width: 55rem;
+        }
+
+        #button{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: gray;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <body>
+        <section>
+            <nav class="navbar navbar-expand-lg navbar-success bg-success">
+                <div class="container-fluid">
+                    <div class="paragraph">
+                        <p>South African COVID-19 Vaccination Programme Registration</p>
+                    </div>
+                    
+                    <form class="d-flex">
+                      <button class="btn btn-outline-light" type="submit">English</button>
+                    </form>
+                  </div>
+                </div>
+            </nav>
+        </section>
+        <section>
+            <div class="container">
+                <img src="SA dept health emblem.jfif" class="img-fluid" alt="SA emblem">
+                <div class="card text-dark bg-light mb-3" style="max-width: 55rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                          This is the official South African COVID-19 Vaccination Programme registration portal
+                        </h5>
+                      <p class="card-text">
+                          <ul>
+                              <li>Vaccination is <b>voluntary and no payment is required.</b></li>
+                              <li>Everyone who registers will be offered Vaccination. <b>When it is your turn, you will recieve an SMS</b> with the date,
+                            time and place for your vaccination.</li>
+                            <li>Registration is now open for everybody <b>18 years and older.</b></li>
+                            <li>We are moving down the age groups as quickly as we can.</li>
+                          </ul>
+                      </p>
+                    </div>
+                </div>
+
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Are you 18 years or older?</option>
+                    <option value="1">No</option>
+                    <option value="2">Yes</option>
+                </select>
+                </br>
+                <button id="button" type="button" class="btn btn-secondary btn-lg">Register for Vaccination</button>
+                </br></br>
+                <footer id="footer">
+                    <p>For more information, terms and conditions please visit:</p>
+                    <a href="url">https://sacoronavirus.co.za/evds/tscs</a>
+                </footer>
+            </div>
+        </section>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    </body>
+</html>
