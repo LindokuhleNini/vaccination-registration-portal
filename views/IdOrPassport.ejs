@@ -14,14 +14,34 @@
             margin-right: auto;
             color: white;
             font-size: large;
+            
+        }
+
+        .btn {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            border: 1px solid #bfc0bf;
+            border-radius: 40px;
+            width: 50rem;
+            height: 4rem;
+            color: black;
+        }
+
+        .btn:hover {
+         background-color: rgb(244, 252, 253);
         }
 
         #button{
             display: block;
             margin-left: auto;
             margin-right: auto;
+            background-color: white;
+            border: 1px solid #bfc0bf;
+            color: rgb(0, 174, 255);
+            border-radius: 40px;
         }
-
         h1{
             font-size: 1.5rem;
         }
@@ -35,7 +55,7 @@
                     </div>
                     
                     <form class="d-flex">
-                      <button class="btn btn-outline-light" type="submit">English</button>
+                      <button class="b btn-outline-light" type="submit" style="color:white; background:rgb(2, 141, 76)">English</button>
                     </form>
                   </div>
                 </div>
@@ -47,12 +67,12 @@
                     <h1 style="text-align: center">Step 2 of 8: General information</h1>
                 </br>
                 <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-outline-secondary btn-lg">Use South African ID</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg">Use Passport</button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg">Use Asylum Seeker / Refugee Number</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg" style="color: rgb(0, 174, 255); font-weight: bold;" onclick="location.href='/id-form'">Use South African ID</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg" style="color: black;">Use Passport</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg" style="color: black;">Use Asylum Seeker / Refugee Number</button>
                 </div>
                 </br>
-                    <button id="button" type="button" class="btn btn-secondary">Go back</button>
+                    <button id="button" type="button" class="button btn-secondary" onclick="location.href='/home'" style="font-weight: bold;">Go back</button>
             </div>
         </section>
 

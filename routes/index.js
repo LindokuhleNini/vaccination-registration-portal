@@ -10,15 +10,15 @@ router.get('/home', function(req, res, next) {
   res.render('Home');
 });
 
-router.get('/id', function(req, res, next) {
+router.get('/method-of-identification', function(req, res, next) {
   res.render('IdOrPassport');
 });
 
-router.get('/idform', function(req, res, next) {
+router.get('/id-form', function(req, res, next) {
   res.render('IdForm');
 });
 
-router.get('/contact', function(req, res, next) {
+router.get('/contact-details', function(req, res, next) {
   res.render('contactDetails');
 });
 
@@ -26,16 +26,24 @@ router.get('/address', function(req, res, next) {
   res.render('Address');
 });
 
-router.get('/medicalaid', function(req, res, next) {
+router.get('/appointment-preference', function(req, res, next) {
+  res.render('appointmentPreference');
+});
+
+router.get('/medical-aid', function(req, res, next) {
   res.render('medicalAid');
 });
 
-router.get('/madetails', function(req, res, next) {
+router.get('/medical-aid-details', function(req, res, next) {
   res.render('medicalAidDetails');
 });
 
-router.get('/done', function(req, res, next) {
+router.get('/successful-registration', function(req, res, next) {
   res.render('successfulRegistration');
+});
+
+router.get('/error', function(req, res, next) {
+  res.render('error');
 });
 
 
