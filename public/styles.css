@@ -1,0 +1,83 @@
+.paragraph{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-size: large;
+}
+
+#paragraph{
+    color: red;
+}
+
+#sentence{
+    text-align: center;
+}
+
+.form-select{
+    margin: 0 auto;
+    float: none;
+    width: 55rem;
+}
+
+#button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1{
+    font-size: 1.5rem;
+    text-align: center;
+}
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+.select{
+    width: 52rem;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 1rem;
+}
+
+#input {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 52rem;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: gray;
+    color: white;
+    text-align: center;
+}
+
+.container{
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.confirmation{
+    align-content: center;
+    text-align: center;
+}
+
+i{
+    margin-left: 17rem;
+}
