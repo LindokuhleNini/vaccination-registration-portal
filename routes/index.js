@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+// Require controller modules.
+var register_controller = require('../controllers/registerController');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('home');
@@ -14,9 +17,9 @@ router.get('/method-of-identification', function(req, res, next) {
   res.render('IdOrPassport');
 });
 
-router.get('/id-form', function(req, res, next) {
-  res.render('IdForm');
-});
+router.get('/id-form', register_controller.general_info_get);
+
+router.get('/id-form', register_controller.general_info_post);
 
 router.get('/contact-details', function(req, res, next) {
   res.render('contactDetails');

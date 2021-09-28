@@ -76,13 +76,13 @@
                 </br>
                     <h1 style="text-align: center">Step 2 of 8: General Information</h1>
                 </br>
-                <form>
-                    <input id="input" placeholder="ID Number"><br><br>
-                    <input id="input" placeholder="Passport number (optional)" required><br><br>
-                    <input id="input" type="date" placeholder="Date of Birth"><br><br>
-                    <input id="input" placeholder="First name(s)"><br><br>
-                    <input id="input" placeholder="surname"><br><br>
-                    <input id="input" list="browsers" name="browser" placeholder="Gender">
+                <form action="/id-form" method="POST">
+                    <input id="input" placeholder="ID Number" name="id"><br><br>
+                    <input id="input" placeholder="Passport number (optional)" name="passport"><br><br>
+                    <input id="input" type="date" placeholder="Date of Birth" name="dob"><br><br>
+                    <input id="input" placeholder="First name(s)" name="name"><br><br>
+                    <input id="input" placeholder="surname" name="surname"><br><br>
+                    <input id="input" list="browsers" name="gender" placeholder="Gender">
                     <datalist id="browsers">
                         <option value="Male">
                         <option value="Female">
@@ -91,11 +91,11 @@
                     <div class="confirmation">
                         <p>I confirm that the information provided is correct<input style="margin-left: 2rem;" type="checkbox"></p>
                     </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/method-of-identification'">Back</button>
+                        <button class="btn btn-secondary" type="submit">Next</button>
+                    </div>
                 </form>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/method-of-identification'">Back</button>
-                    <button class="btn btn-secondary" type="button" onclick="location.href='/contact-details'">Next</button>
-                </div>
             </div>
         </section>
 
