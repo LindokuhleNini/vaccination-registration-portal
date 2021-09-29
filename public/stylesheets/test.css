@@ -1,0 +1,48 @@
+.paragraph{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-size: large;
+}
+
+.form-select{
+    margin: 0 auto;
+    float: none;
+    width: 55rem;
+}
+
+.btn{
+ 
+    background-color: white;
+    border: 1px solid #bfc0bf;
+    color: rgb(0, 174, 255);
+    border-radius: 40px;
+    width: 5rem;
+}
+
+#buttons{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1{
+    font-size: 1.5rem;
+}
+
+#input {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: -1rem;
+    width: 50rem;
+}
+
+.confirmation{
+    align-content: center;
+    text-align: center;
+}
+
+i{
+    margin-left: 17rem;
+}

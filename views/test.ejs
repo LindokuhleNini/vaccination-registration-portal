@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/test.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <title>Test form</title>
+</head>
+<body>
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-success bg-success">
+            <div class="container-fluid">
+                <div class="paragraph">
+                    <p>South African COVID-19 Vaccination Programme Registration</p>
+                </div>
+                <form class="d-flex">
+                  <button class="btn btn-outline-light" type="submit">English</button>
+                </form>
+              </div>
+            </div>
+        </nav>
+    </section>
+    <section>
+        <div class="container">
+            </br>
+                <h1 style="text-align: center">Step 2 of 8: General Information</h1>
+            </br>
+            <form action="/id-form" method="POST">
+                <input id="input" placeholder="ID Number" name="id" required><br><br>
+                <input id="input" placeholder="Passport number (optional)" name="passport" optional><br><br>
+                <input id="input" type="date" placeholder="Date of Birth" name="dob" required><br><br>
+                <input id="input" placeholder="First name(s)" name="name" required><br><br>
+                <input id="input" placeholder="surname" name="surname" required><br><br>
+                <input id="input" list="browsers" name="gender" placeholder="Gender">
+                <datalist id="browsers">
+                    <option value="Male">
+                    <option value="Female">
+                </datalist>
+                </br></br>
+                <div class="confirmation">
+                    <p>I confirm that the information provided is correct<input style="margin-left: 2rem;" type="checkbox"></p>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/method-of-identification'">Back</button>
+                    <button class="btn btn-secondary" type="submit">Next</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</body>
+</html>

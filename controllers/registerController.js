@@ -33,7 +33,7 @@ exports.general_info_post = [
   }
     else {
         // Data from form is valid. Save book.
-       
+        res.render('contactDetails')
     }
 }
 ];
