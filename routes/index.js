@@ -1,12 +1,13 @@
 var express = require('express');
-var router = express.Router();
+var bodyParser = require('body-parser');
 
-// middleware & static files
-router.use(express.static('public'));
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('home');
+  res.render('Home');
 });
 
 router.get('/home', function(req, res, next) {
@@ -17,9 +18,8 @@ router.get('/method-of-identification', function(req, res, next) {
   res.render('IdOrPassport');
 });
 
-router.get('/id-form', function(req, res, next) {
-  res.render('IdForm');
-});
+router.get('/id-form', register_controller.general_info_get);
+router.post('/id-form', urlencodedParser, register_controller.general_info_post);
 
 router.get('/contact-details', function(req, res, next) {
   res.render('contactDetails');
