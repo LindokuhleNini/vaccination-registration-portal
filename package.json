@@ -16,7 +16,5 @@
     "express": "^4.16.4",
     "express-validator": "^6.12.2",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "sqlite3": "^5.0.2"
   }
-}
+

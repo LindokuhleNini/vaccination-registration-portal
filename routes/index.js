@@ -5,9 +5,6 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var router = express.Router();
 
-// Require controller modules.
-var register_controller = require('../controllers/registerController');
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('Home');
