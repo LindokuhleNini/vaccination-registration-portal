@@ -38,15 +38,10 @@ h1{
     width: 50rem;
 }
 
-/* If input is not empty */
-/* input:not(:placeholder-shown) {
-  border-color: rgb(0, 132, 255);
+.alert{
+    height: fit-content;
 }
 
-input:placeholder-shown {
-  border-color: red;
-}
- */
 .confirmation{
     align-content: center;
     text-align: center;

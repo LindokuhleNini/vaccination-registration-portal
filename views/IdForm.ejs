@@ -33,13 +33,23 @@
             </br>
             <h1 style="text-align: center">Step 2 of 8: General Information</h1>
             </br>
+            <% if(typeof alert != 'undefined') { %>
+                <% alert.forEach(function(error) { %>
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert">
+                        <%= error.msg %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                <% }) %>
+            <% } %>
             <form name="form" action="/id-form" method="POST">
-                <input id="input" type="number" placeholder="ID Number" name="id" required><br><br>
-                <input id="input" placeholder="Passport number (optional)" name="passport" optional><br><br>
-                <input id="input" type="date" placeholder="Date of Birth" name="dob" required><br><br>
-                <input id="input" placeholder="First name(s)" name="name" required><br><br>
-                <input id="input" placeholder="surname" name="surname" required><br><br>
-                <input id="input" list="browsers" name="gender" placeholder="Gender" required>
+                <input id="input" type="number" placeholder="ID Number" name="id"><br><br>
+                <input id="input" placeholder="Passport number (optional)" name="passport"><br><br>
+                <input id="input" type="date" placeholder="Date of Birth" name="dob"><br><br>
+                <input id="input" placeholder="First name(s)" name="name"><br><br>
+                <input id="input" placeholder="surname" name="surname"><br><br>
+                <input id="input" list="browsers" name="gender" placeholder="Gender">
                 <datalist id="browsers">
                     <option value="Male">
                     <option value="Female">

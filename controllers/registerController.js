@@ -1,5 +1,6 @@
 var express = require('express');
 var {body, validationResult} = require('express-validator');
+
 var router = express.Router();
 
 /* GET form. */
@@ -20,18 +21,17 @@ exports.general_info_post = [
  
  // Process request after validation and sanitization.
  (req, res, next) => {
-
-    // Extract the validation errors from a request.
-    const errors = validationResult(req)
+    const errors = validationResult(req);
     if(!errors.isEmpty()) {
-      return res.status(422).jsonp(errors.array())
-
-  }
-    else {
-        // Data from form is valid. Save book.
-        //res.render('contactDetails')
-        res.redirect('/contact-details')
+        // return res.status(422).jsonp(errors.array())
+        const alert = errors.array()
+        res.render('idForm', {
+            alert
+        })
+    } else {
+        res.redirect('/contact-details');
     }
 }
 ];
+
 

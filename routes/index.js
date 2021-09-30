@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 var router = express.Router();
 
 // Require controller modules.
@@ -20,7 +22,7 @@ router.get('/method-of-identification', function(req, res, next) {
 });
 
 router.get('/id-form', register_controller.general_info_get);
-router.post('/id-form', register_controller.general_info_post);
+router.post('/id-form', urlencodedParser, register_controller.general_info_post);
 
 router.get('/contact-details', function(req, res, next) {
   res.render('contactDetails');
