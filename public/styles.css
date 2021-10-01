@@ -57,6 +57,10 @@ img{
     margin-right: auto;
 }
 
+.link{
+    text-align: center;
+}
+
 footer{
     position: fixed;
     left: 0;

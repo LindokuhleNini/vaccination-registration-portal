@@ -56,13 +56,13 @@
                 </datalist>
                 </br></br>
                 <div class="confirmation">
-                    <p>I confirm that the information provided is correct<input style="margin-left: 2rem;"
+                    <p>I confirm that the information provided is correct<input name="accept" style="margin-left: 2rem;"
                             type="checkbox"></p>
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <button class="btn btn-secondary me-md-2" type="button"
                         onclick="location.href='/method-of-identification'">Back</button>
-                    <button class="btn btn-secondary" type="submit">Next</button>
+                    <button id="next" value="false" class="btn btn-secondary" type="submit">Next</button>
                 </div>
             </form>
         </div>
@@ -73,6 +73,15 @@
         });
         function emptyField() {
                 this.style.borderColor = !!this.value ? "rgb(0, 132, 255)" : "red";
+        }
+
+        function checkBox(){
+            if(document.querySelector('#accept:checked') != null){
+                var btnNext = document. getElementById("next");
+                btnNext.disabled = false;
+            } else{
+                btnNext.disabled = true;
+            }
         }
         
     </script>
