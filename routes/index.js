@@ -5,14 +5,13 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Home');
-});
+// Require controller modules.
+var register_controller = require('../controllers/registerController');
 
-router.get('/home', function(req, res, next) {
-  res.render('Home');
-});
+/* GET home page. */
+
+router.get('/home', register_controller.register_get);
+router.post('/home', urlencodedParser, register_controller.register_post);
 
 router.get('/method-of-identification', function(req, res, next) {
   res.render('IdOrPassport');
@@ -21,9 +20,8 @@ router.get('/method-of-identification', function(req, res, next) {
 router.get('/id-form', register_controller.general_info_get);
 router.post('/id-form', urlencodedParser, register_controller.general_info_post);
 
-router.get('/contact-details', function(req, res, next) {
-  res.render('contactDetails');
-});
+router.get('/contact-details', register_controller.contact_details_get);
+router.post('/contact-details', urlencodedParser, register_controller.contact_details_post);
 
 router.get('/address', function(req, res, next) {
   res.render('Address');
