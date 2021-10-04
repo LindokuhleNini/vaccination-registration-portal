@@ -15,7 +15,8 @@
     "ejs": "~2.6.1",
     "express": "^4.16.4",
     "express-validator": "^6.12.2",
-    "http-errors": "~1.6.3"
+    "http-errors": "~1.6.3",
+    "mongoose": "^6.0.8",
+    "morgan": "^1.10.0"
   }
 }
-

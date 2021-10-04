@@ -1,5 +1,6 @@
 var express = require('express');
 var {body, validationResult} = require('express-validator');
+var PeoplesDetail = require('../models/peoplesDetail');
 
 var router = express.Router();
 
@@ -38,10 +39,10 @@ exports.register_post = [
 exports.general_info_post = [
 
     // Validate and sanitise fields.
-    body('id', 'ID must not be empty.').trim().isLength({ min: 13 }).escape(),
-    body('passport', 'Must be a passport number').trim().isLength({ min: 1 }).escape(),
-    body('dob', 'Date of birth must not be empty.').trim().isLength({ min: 1 }).escape(),
-    body('name', 'Name must not be empty').trim().isLength({ min: 1 }).escape(),
+    body('idNumber', 'ID must not be empty.').trim().isLength({ min: 13 }).escape(),
+    body('passportNumber', 'Must be a passport number').trim().isLength({ min: 1 }).escape(),
+    body('dateOfBirth', 'Date of birth must not be empty.').trim().isLength({ min: 1 }).escape(),
+    body('firstName', 'Name must not be empty').trim().isLength({ min: 1 }).escape(),
     body('surname', 'Surname must not be empty').trim().isLength({ min: 1 }).escape(),
     body('gender', 'Choose gender').trim().isLength({ min: 1 }).escape(),
     // body('check', '').trim().isBoolean('true').escape(),
@@ -56,8 +57,17 @@ exports.general_info_post = [
             alert
         })
     } else {
-        res.redirect('/contact-details');
+        // save to database
+        const peoplesDetail = new PeoplesDetail(req.body);
+        peoplesDetail.save()
+        .then((result) => {
+            res.redirect('/contact-details');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
+    
 }
 ];
 
