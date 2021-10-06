@@ -44,7 +44,7 @@ h1{
     margin-bottom: 1rem;
 }
 
-#input {
+#input, #pronvice, #category {
     display: block;
     margin-right: auto;
     margin-left: auto;
