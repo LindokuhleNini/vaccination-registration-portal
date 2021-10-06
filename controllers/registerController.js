@@ -6,7 +6,7 @@ var router = express.Router();
 
 /* GET form. */
 exports.register_get = function(req, res, next) {
-    res.render('Home')
+    res.render('home')
  }; 
 
  /* POST form. */
@@ -22,14 +22,18 @@ exports.register_post = [
     if(!errors.isEmpty()) {
         // return res.status(422).jsonp(errors.array())
         const alert = errors.array()
-        res.render('Home', {
+        res.render('home', {
             alert
         })
     } else {
-        res.redirect('/id-form');
+        res.redirect('/method-of-identification');
     }
 }
 ];
+
+exports.method_of_identification = function(req, res, next) {
+    res.render('IdOrPassport');
+  };
 
  exports.general_info_get = function(req, res, next) {
    res.render('idForm')
@@ -100,3 +104,27 @@ exports.contact_details_get = function(req, res, next) {
      }
  }
  ];
+
+ exports.address = function(req, res, next) {
+    res.render('address');
+  };
+
+  exports.appointment_preference = function(req, res, next) {
+    res.render('appointmentPreference');
+  };
+
+  exports.medical_aid = function(req, res, next) {
+    res.render('medicalAid');
+  };
+
+  exports.medical_aid_details = function(req, res, next) {
+    res.render('medicalAidDetails');
+  };
+
+  exports.successful_registration = function(req, res, next) {
+    res.render('successfulRegistration');
+  };
+
+  exports.errors = function(req, res, next) {
+    res.render('error');
+  };

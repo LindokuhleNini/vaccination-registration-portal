@@ -13,9 +13,7 @@ var register_controller = require('../controllers/registerController');
 router.get('/home', register_controller.register_get);
 router.post('/home', urlencodedParser, register_controller.register_post);
 
-router.get('/method-of-identification', function(req, res, next) {
-  res.render('IdOrPassport');
-});
+router.get('/method-of-identification', register_controller.method_of_identification);
 
 router.get('/id-form', register_controller.general_info_get);
 router.post('/id-form', urlencodedParser, register_controller.general_info_post);
@@ -23,29 +21,17 @@ router.post('/id-form', urlencodedParser, register_controller.general_info_post)
 router.get('/contact-details', register_controller.contact_details_get);
 router.post('/contact-details', urlencodedParser, register_controller.contact_details_post);
 
-router.get('/address', function(req, res, next) {
-  res.render('Address');
-});
+router.get('/address', register_controller.address);
 
-router.get('/appointment-preference', function(req, res, next) {
-  res.render('appointmentPreference');
-});
+router.get('/appointment-preference', register_controller.appointment_preference);
 
-router.get('/medical-aid', function(req, res, next) {
-  res.render('medicalAid');
-});
+router.get('/medical-aid', register_controller.medical_aid);
 
-router.get('/medical-aid-details', function(req, res, next) {
-  res.render('medicalAidDetails');
-});
+router.get('/medical-aid-details', register_controller.medical_aid_details);
 
-router.get('/successful-registration', function(req, res, next) {
-  res.render('successfulRegistration');
-});
+router.get('/successful-registration', register_controller.successful_registration);
 
-router.get('/error', function(req, res, next) {
-  res.render('error');
-});
+router.get('/error', register_controller.errors);
 
 
 module.exports = router;
