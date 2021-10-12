@@ -41,22 +41,24 @@
                       </p>
                     </div>
                 </div>
-                <select class="select" name="pronvice" id="pronvice" onChange="changecat(this.value);">
-                    <option value="" disabled selected>Select</option>
-                    <option value="WesternCape">Western Cape</option>
-                    <option value="KwaZuluNatal">Kwa-Zulu Natal</option>
-                    <option value="Gauteng">Gauteng</option>
-                </select><br/>
-                <select class="select" name="category" id="category">
-                    <option value="" disabled selected>Select</option>
-                </select><br/>
-
-                <input id="input" placeholder="Address"><br/>
-
-                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/contact-details'">Back</button>
-                    <button class="btn btn-secondary" type="button" onclick="location.href='/appointment-preference'">Next</button>
-                </div>
+                <form action="/address" method="POST">
+                    <select class="select" name="pronvice" id="pronvice" onChange="changecat(this.value);" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="WesternCape">Western Cape</option>
+                        <option value="KwaZuluNatal">Kwa-Zulu Natal</option>
+                        <option value="Gauteng">Gauteng</option>
+                    </select><br/>
+                    <select class="select" name="manucipality" id="manucipality">
+                        <option value="" disabled selected>Select</option>
+                    </select><br/>
+    
+                    <input id="input" name="street" placeholder="Address" required><br/>
+    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/contact-details'">Back</button>
+                        <button class="btn btn-secondary">Next</button>
+                    </div>
+                </form>
             </div>
         </section>
 
@@ -71,13 +73,13 @@
             }
 
             function changecat(value) {
-                if (value.length == 0) document.getElementById("category").innerHTML = "<option></option>";
+                if (value.length == 0) document.getElementById("manucipality").innerHTML = "<option></option>";
                 else {
                     var catOptions = "";
                     for (categoryId in pronvicesByCategory[value]) {
                         catOptions += "<option>" + pronvicesByCategory[value][categoryId] + "</option>";
                     }
-                    document.getElementById("category").innerHTML = catOptions;
+                    document.getElementById("manucipality").innerHTML = catOptions;
                 }
             }
         </script>

@@ -6,7 +6,10 @@ const peoplesDetailSchema = new Schema({
         type: String,
         required: true
     },
-    passportNumber: String,
+    passportNumber: {
+        String,
+        required: false
+    },
     dateOfBirth:{
         type: Date,
         required: true
@@ -23,6 +26,39 @@ const peoplesDetailSchema = new Schema({
         type: String,
         required: true
     }, 
+    contactDetails: {
+        phoneNumber: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String
+        }
+    },
+    address: {
+        pronvince: {
+            type: String,
+            required: true
+        },
+        manucipality: {
+            type: String,
+            required: true
+        },
+        street: {
+            type: String,
+            required: true
+        }
+    },
+    medicailAidDetails: {
+        medicalAidName: {
+            type: String,
+            required: true
+        },
+        medicalAidNumber: {
+            type: String,
+            required: true
+        }
+    }
 }, { timestamps: true});
 
 const PeoplesDetail = mongoose.model('PeoplesDetail', peoplesDetailSchema);

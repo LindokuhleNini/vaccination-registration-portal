@@ -4,6 +4,19 @@ var PeoplesDetail = require('../models/peoplesDetail');
 
 var router = express.Router();
 
+// Global variables
+var IdNumber;
+var PassportNumber;
+var DateOfBirth;
+var FirstName;
+var Surname;
+var Gender;
+var PhoneNumber;
+var Pronvice;
+var Email;
+var Manucipality;
+var Street;
+
 /* GET form. */
 exports.register_get = function(req, res, next) {
     res.render('home')
@@ -44,7 +57,7 @@ exports.general_info_post = [
 
     // Validate and sanitise fields.
     body('idNumber', 'ID must not be empty.').trim().isLength({ min: 13 }).escape(),
-    body('passportNumber', 'Must be a passport number').trim().isLength({ min: 1 }).escape(),
+    //body('passportNumber', 'Must be a passport number').trim().isLength({ min: 1 }).escape(),
     body('dateOfBirth', 'Date of birth must not be empty.').trim().isLength({ min: 1 }).escape(),
     body('firstName', 'Name must not be empty').trim().isLength({ min: 1 }).escape(),
     body('surname', 'Surname must not be empty').trim().isLength({ min: 1 }).escape(),
@@ -61,15 +74,22 @@ exports.general_info_post = [
             alert
         })
     } else {
+        IdNumber = req.body.idNumber;
+        PassportNumber = req.body.passportNumber;
+        DateOfBirth = req.body.dateOfBirth;
+        FirstName = req.body.firstName;
+        Surname = req.body.surname;
+        Gender = req.body.gender;
+        res.redirect('/contact-details')
         // save to database
-        const peoplesDetail = new PeoplesDetail(req.body);
-        peoplesDetail.save()
-        .then((result) => {
-            res.redirect('/contact-details');
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        // const peoplesDetail = new PeoplesDetail(req.body);
+        // peoplesDetail.save()
+        // .then((result) => {
+        //     res.redirect('/contact-details');
+        // })
+        // .catch((err) => {
+        //     console.log(err);
+        // })
     }
     
 }
@@ -83,7 +103,7 @@ exports.contact_details_get = function(req, res, next) {
  exports.contact_details_post = [
  
      // Validate and sanitise fields.
-     body('phone')
+     body('phoneNumber')
             .not()
             .isEmpty()
             .withMessage('Mobile number is required'),
@@ -100,6 +120,8 @@ exports.contact_details_get = function(req, res, next) {
              alert
          })
      } else {
+         PhoneNumber = req.body.phoneNumber;
+         Email = req.body.email;
          res.redirect('/address');
      }
  }
@@ -108,6 +130,40 @@ exports.contact_details_get = function(req, res, next) {
  exports.address = function(req, res, next) {
     res.render('address');
   };
+
+  exports.address_post = [
+ 
+    // Validate fields.
+    // body('province')
+    //        .not()
+    //        .isEmpty()
+    //        .withMessage('Province is required'),
+    // body('province')
+    //        .not()
+    //        .isEmpty()
+    //        .withMessage('Province is required'),
+    // body('street')
+    //         .not()
+    //         .isEmpty()
+    //         .withMessage('Street is required'),
+
+ // Process request after validation and sanitization.
+ (req, res, next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) {
+        // return res.status(422).jsonp(errors.array())
+        const alert = errors.array()
+        res.render('address', {
+            alert
+        })
+    } else {
+        Pronvice = req.body.pronvice;
+        Manucipality = req.body.manucipality;
+        Street = req.body.street;
+        res.redirect('/appointment-preference');
+    }
+}
+];
 
   exports.appointment_preference = function(req, res, next) {
     res.render('appointmentPreference');
@@ -120,6 +176,40 @@ exports.contact_details_get = function(req, res, next) {
   exports.medical_aid_details = function(req, res, next) {
     res.render('medicalAidDetails');
   };
+
+  exports.person_details_post = [
+    (req, res, next) => {
+        const peoplesDetail = new PeoplesDetail({
+            idNumber: IdNumber,
+            passportNumber: PassportNumber,
+            dateOfBirth: DateOfBirth,
+            firstName: FirstName,
+            surname: Surname,
+            gender: Gender,
+            contactDetails: {
+                phoneNumber: PhoneNumber,
+                email: Email
+            },
+            address: {
+                pronvince: Pronvice,
+                manucipality: Manucipality,
+                street: Street
+            },
+            medicailAidDetails: {
+                medicalAidName: req.body.medicalAidName,
+                medicalAidNumber: req.body.medicalAidNumber
+            }
+        });
+        console.log(peoplesDetail.idNumber, peoplesDetail.pronvice, peoplesDetail.manucipality, peoplesDetail.medicalAidNumber);
+        peoplesDetail.save()
+        .then((result) => {
+            res.redirect('/successful-registration');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+];
 
   exports.successful_registration = function(req, res, next) {
     res.render('successfulRegistration');

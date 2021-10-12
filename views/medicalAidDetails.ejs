@@ -43,8 +43,9 @@
                     </div>
                 </div>
                 <p style="text-align: center;">Do you belong to a Medical Aid?</p>
-                
-                <input id="input" list="browsers" name="browser" placeholder="Medical aid scheme name">
+
+                <form name="form" action="/medical-aid-details" method="POST">
+                    <input id="input" list="browsers" name="medicalAidName" placeholder="Medical aid scheme name" required>
                     <datalist id="browsers">
                         <option value="AECI-MEDICAL AID SOCIETY">
                         <option value="ALLIANCE-MIDMED MEDICAL SCHEME">
@@ -52,12 +53,13 @@
                     </datalist>
                     </br></br>
                 
-                <input id="input" type="number" name="medicalAidNumber" placeholder="Medical aid number">
-                <br><br>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/medical-aid'">Back</button>
-                    <button class="btn btn-secondary" type="button" onclick="location.href='/successful-registration'">Next</button>
-                </div>
+                    <input id="input" type="number" name="medicalAidNumber" placeholder="Medical aid number" required>
+                    <br><br>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                        <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/medical-aid'">Back</button>
+                        <button class="btn btn-secondary" type="submit">Next</button>
+                    </div>
+                </form>
             </div>
         </section>
 
