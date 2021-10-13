@@ -8,7 +8,7 @@ var router = express.Router();
 // Require controller modules.
 var register_controller = require('../controllers/registerController');
 
-/* GET home page. */
+/* Client pages. */
 
 router.get('/home', register_controller.register_get);
 router.post('/home', urlencodedParser, register_controller.register_post)

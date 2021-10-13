@@ -81,15 +81,6 @@ exports.general_info_post = [
         Surname = req.body.surname;
         Gender = req.body.gender;
         res.redirect('/contact-details')
-        // save to database
-        // const peoplesDetail = new PeoplesDetail(req.body);
-        // peoplesDetail.save()
-        // .then((result) => {
-        //     res.redirect('/contact-details');
-        // })
-        // .catch((err) => {
-        //     console.log(err);
-        // })
     }
     
 }
@@ -200,7 +191,6 @@ exports.contact_details_get = function(req, res, next) {
                 medicalAidNumber: req.body.medicalAidNumber
             }
         });
-        console.log(peoplesDetail.idNumber, peoplesDetail.pronvice, peoplesDetail.manucipality, peoplesDetail.medicalAidNumber);
         peoplesDetail.save()
         .then((result) => {
             res.redirect('/successful-registration');
