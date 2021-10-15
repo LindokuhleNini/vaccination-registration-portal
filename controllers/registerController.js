@@ -169,6 +169,8 @@ exports.contact_details_get = function(req, res, next) {
   };
 
   exports.person_details_post = [
+      // code required for medical aid validation
+      
     (req, res, next) => {
         const peoplesDetail = new PeoplesDetail({
             idNumber: IdNumber,
