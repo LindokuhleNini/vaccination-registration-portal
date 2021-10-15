@@ -125,18 +125,18 @@ exports.contact_details_get = function(req, res, next) {
   exports.address_post = [
  
     // Validate fields.
-    // body('province')
-    //        .not()
-    //        .isEmpty()
-    //        .withMessage('Province is required'),
-    // body('province')
-    //        .not()
-    //        .isEmpty()
-    //        .withMessage('Province is required'),
-    // body('street')
-    //         .not()
-    //         .isEmpty()
-    //         .withMessage('Street is required'),
+    body('province')
+           .not()
+           .isEmpty()
+           .withMessage('Province is required'),
+    body('province')
+           .not()
+           .isEmpty()
+           .withMessage('Province is required'),
+    body('street')
+            .not()
+            .isEmpty()
+            .withMessage('Street is required'),
 
  // Process request after validation and sanitization.
  (req, res, next) => {
