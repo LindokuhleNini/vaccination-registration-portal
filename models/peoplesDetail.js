@@ -36,7 +36,7 @@ const peoplesDetailSchema = new Schema({
         }
     },
     address: {
-        pronvince: {
+        province: {
             type: String,
             required: true
         },

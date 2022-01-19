@@ -10,6 +10,9 @@ var register_controller = require('../controllers/registerController');
 
 /* Client pages. */
 
+router.get('/', register_controller.register_get);
+router.post('/', urlencodedParser, register_controller.register_post)
+
 router.get('/home', register_controller.register_get);
 router.post('/home', urlencodedParser, register_controller.register_post)
 

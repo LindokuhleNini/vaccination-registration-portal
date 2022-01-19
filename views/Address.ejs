@@ -40,7 +40,7 @@
                     <% }) %>
                 <% } %>
                 <form action="/address" method="POST">
-                    <select class="select" name="pronvice" id="pronvice" onChange="changecat(this.value);">
+                    <select class="select" name="province" id="province" onChange="changecat(this.value);">
                         <option value="" disabled selected>Select</option>
                         <option value="WesternCape">Western Cape</option>
                         <option value="KwaZuluNatal">Kwa-Zulu Natal</option>
@@ -64,7 +64,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
 
         <script>
-            var pronvicesByCategory = {
+            var provincesByCategory = {
             WesternCape: ["City of Cape Town Metropolitan", "Cape Winelands District", "Central Karoo District", "Others"],
             KwaZuluNatal: ["eThekwini", "Amajuba District", "Harry Gwala District", "Others"],
             Gauteng: ["City of Ekurhuleni", "City of Johannesburg Metropolitan Municipality", "Emfuleni Local Municipality", "Lesedi Local Municipality", "Others"]
@@ -74,8 +74,8 @@
                 if (value.length == 0) document.getElementById("manucipality").innerHTML = "<option></option>";
                 else {
                     var catOptions = "";
-                    for (categoryId in pronvicesByCategory[value]) {
-                        catOptions += "<option>" + pronvicesByCategory[value][categoryId] + "</option>";
+                    for (categoryId in provincesByCategory[value]) {
+                        catOptions += "<option>" + provincesByCategory[value][categoryId] + "</option>";
                     }
                     document.getElementById("manucipality").innerHTML = catOptions;
                 }

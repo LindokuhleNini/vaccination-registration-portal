@@ -12,7 +12,7 @@ var FirstName;
 var Surname;
 var Gender;
 var PhoneNumber;
-var Pronvice;
+var Province;
 var Email;
 var Manucipality;
 var Street;
@@ -148,7 +148,7 @@ exports.contact_details_get = function(req, res, next) {
             alert
         })
     } else {
-        Pronvice = req.body.pronvice;
+        Province = req.body.province;
         Manucipality = req.body.manucipality;
         Street = req.body.street;
         res.redirect('/appointment-preference');
@@ -184,7 +184,7 @@ exports.contact_details_get = function(req, res, next) {
                 email: Email
             },
             address: {
-                pronvince: Pronvice,
+                province: Province,
                 manucipality: Manucipality,
                 street: Street
             },
