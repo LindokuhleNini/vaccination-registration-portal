@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 var logger = require('morgan');
-var PeoplesDetail = require('./models/peoplesDetail');
+//var PeoplesDetail = require('./models/peoplesDetail');
 var twilio = require('twilio');
 var accountSid = 'AC0eb08a4c7a2cb53efa57a769d9987dad';
 var authToken = '35ac82ba4e384602d96ab5a7f6e75269';
@@ -18,7 +18,7 @@ var app = express();
 
 //Personal Details
 
-const peoplesDetail = new PeoplesDetail({
+const PeoplesDetail = new mongoose.Schema({
   idNumber: String,
   passportNumber: String,
   dateOfBirth: Date,
@@ -77,7 +77,7 @@ app.use(function(err, req, res, next) {
 
 //WhatsApp Chatbot
 
-let generalInformation = mongoose.model('generalInformation', peoplesDetail);
+let generalInformation = mongoose.model('generalInformation', PeoplesDetail);
 // Still need to configure a webhook
 app.post('/receive-message', (req, res) =>{
   let from = req.body.From;
