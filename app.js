@@ -7,8 +7,8 @@ var mongoose = require('mongoose');
 var logger = require('morgan');
 var PeoplesDetail = require('./models/peoplesDetail');
 var twilio = require('twilio');
-var accountSid = ''; // Still need to be configured
-var authToken = ''; // Still need to be configured
+var accountSid = 'AC0eb08a4c7a2cb53efa57a769d9987dad';
+var authToken = '35ac82ba4e384602d96ab5a7f6e75269';
 var client = new twilio(accountSid, authToken);
 
 var indexRouter = require('./routes/index');
