@@ -8,7 +8,7 @@ var logger = require('morgan');
 //var PeoplesDetail = require('./models/peoplesDetail');
 var twilio = require('twilio');
 var accountSid = 'AC0eb08a4c7a2cb53efa57a769d9987dad';
-var authToken = '35ac82ba4e384602d96ab5a7f6e75269';
+var authToken = '7ea3d3d1c89a135925a917032f081174';
 var client = new twilio(accountSid, authToken);
 
 var indexRouter = require('./routes/index');
@@ -40,10 +40,11 @@ const PeoplesDetail = new mongoose.Schema({
   }
 });
 // connect to mongodb
-const dbURI = 'mongodb+srv://Person:Person4321@vaccineportal.fftn2.mongodb.net/VaccinePortal?retryWrites=true&w=majority'
+const dbURI = 'mongodb+srv://lindo:Apple123@cluster0.hokzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then((result) => app.listen(3001)) // listen for requests
+    .then((result) => app.listen(5000)) // listen for requests
     .catch((err) => console.log(err));
+    console.log("DB and server Connected");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -60,9 +61,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -87,7 +88,7 @@ app.post('/receive-message', (req, res) =>{
   generalInformation.find({idNumber: req.body.From}, (err, generalInfo) =>{
     if (generalInfo.length !== 0){
       if (!generalInfo[0].idNumber && !generalInfo[0].passportNumber && !generalInfo[0].dateOfBirth && !generalInfo[0].firstName
-        && !generalInfo[0].surname && !generalInfo[0].gender && !generalInfo[0].email && !generalInfo[0].province && generalInfo[0].manucipality
+        && !generalInfo[0].surname && !generalInfo[0].gender && !generalInfo[0].email && !generalInfo[0].province && !generalInfo[0].manucipality
         && !generalInfo[0].street && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
 
           generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"idNumber": body}}, {"new": true, "upsert": true}, () =>{
@@ -234,7 +235,7 @@ app.post('/receive-message', (req, res) =>{
                           }
     }else{
       if (body === 'Register'){
-        let newGeneralInformation = new peoplesDetail();
+        let newGeneralInformation = new generalInformation;
         newGeneralInformation.phoneNumber = from;
         newGeneralInformation.save(() => {
           client.messages.create({
