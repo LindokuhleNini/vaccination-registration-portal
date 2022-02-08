@@ -8,7 +8,7 @@ var logger = require('morgan');
 //var PeoplesDetail = require('./models/peoplesDetail');
 var twilio = require('twilio');
 var accountSid = 'AC0eb08a4c7a2cb53efa57a769d9987dad';
-var authToken = '7ea3d3d1c89a135925a917032f081174';
+var authToken = 'd97e706e41ee974b46861070fb25a5e1';
 var client = new twilio(accountSid, authToken);
 
 var indexRouter = require('./routes/index');
@@ -18,10 +18,11 @@ var app = express();
 
 //Personal Details
 
+//only data that gets saved to db starts from id number up until gender
 const PeoplesDetail = new mongoose.Schema({
   idNumber: String,
   passportNumber: String,
-  dateOfBirth: Date,
+  dateOfBirth: String,
   firstName: String,
   surname: String,
   gender: String,
@@ -39,6 +40,23 @@ const PeoplesDetail = new mongoose.Schema({
       medicalAidNumber: String
   }
 });
+
+//all data gets saved to db
+// const PeoplesDetail = new mongoose.Schema({
+//     idNumber: String,
+//     passportNumber: String,
+//     dateOfBirth: String,
+//     firstName: String,
+//     surname: String,
+//     gender: String,
+//     email: String,
+//     province: String,
+//     manucipality: String,
+//     street: String,
+//     medicalAidName: String,
+//     medicalAidNumber: String
+//   });
+  
 // connect to mongodb
 const dbURI = 'mongodb+srv://lindo:Apple123@cluster0.hokzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -85,7 +103,7 @@ app.post('/receive-message', (req, res) =>{
   let to = req.body.To;
   let body = req.body.Body;
 
-  generalInformation.find({idNumber: req.body.From}, (err, generalInfo) =>{
+  generalInformation.find({phoneNumber: from}, (err, generalInfo) =>{
     if (generalInfo.length !== 0){
       if (!generalInfo[0].idNumber && !generalInfo[0].passportNumber && !generalInfo[0].dateOfBirth && !generalInfo[0].firstName
         && !generalInfo[0].surname && !generalInfo[0].gender && !generalInfo[0].email && !generalInfo[0].province && !generalInfo[0].manucipality
@@ -101,20 +119,20 @@ app.post('/receive-message', (req, res) =>{
             res.end();
           })
         } else if (!generalInfo[0].passportNumber && !generalInfo[0].dateOfBirth && !generalInfo[0].firstName
-          && !generalInfo[0].surname && !generalInfo[0].gender && !generalInfo[0].email && !generalInfo[0].province && generalInfo[0].manucipality
+          && !generalInfo[0].surname && !generalInfo[0].gender && !generalInfo[0].email && !generalInfo[0].province && !generalInfo[0].manucipality
           && !generalInfo[0].street && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
   
             generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"passportNumber": body}}, {"new": true, "upsert": true}, () =>{
               client.messages.create({
                 to: `${from}`,
                 from: `${to}`,
-                body: 'What is your passport date of birth?'
+                body: 'What is your date of birth?'
               })
   
               res.end();
             })
           }else if (!generalInfo[0].dateOfBirth && !generalInfo[0].firstName && !generalInfo[0].surname && !generalInfo[0].gender 
-            && !generalInfo[0].email && !generalInfo[0].province && generalInfo[0].manucipality && !generalInfo[0].street 
+            && !generalInfo[0].email && !generalInfo[0].province && !generalInfo[0].manucipality && !generalInfo[0].street 
             && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
     
               generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"dateOfBirth": body}}, {"new": true, "upsert": true}, () =>{
@@ -127,7 +145,7 @@ app.post('/receive-message', (req, res) =>{
                 res.end();
               })
             }else if (!generalInfo[0].firstName && !generalInfo[0].surname && !generalInfo[0].gender 
-              && !generalInfo[0].email && !generalInfo[0].province && generalInfo[0].manucipality && !generalInfo[0].street 
+              && !generalInfo[0].email && !generalInfo[0].province && !generalInfo[0].manucipality && !generalInfo[0].street 
               && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
       
                 generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"firstName": body}}, {"new": true, "upsert": true}, () =>{
@@ -140,7 +158,7 @@ app.post('/receive-message', (req, res) =>{
                   res.end();
                 })
               }else if (!generalInfo[0].surname && !generalInfo[0].gender && !generalInfo[0].email && !generalInfo[0].province 
-                && generalInfo[0].manucipality && !generalInfo[0].street && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
+                && !generalInfo[0].manucipality && !generalInfo[0].street && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
         
                   generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"surname": body}}, {"new": true, "upsert": true}, () =>{
                     client.messages.create({
@@ -152,7 +170,7 @@ app.post('/receive-message', (req, res) =>{
                     res.end();
                   })
                 }else if (!generalInfo[0].gender && !generalInfo[0].email && !generalInfo[0].province 
-                  && generalInfo[0].manucipality && !generalInfo[0].street && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
+                  && !generalInfo[0].manucipality && !generalInfo[0].street && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
           
                     generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"gender": body}}, {"new": true, "upsert": true}, () =>{
                       client.messages.create({
@@ -163,7 +181,7 @@ app.post('/receive-message', (req, res) =>{
           
                       res.end();
                     })
-                  }else if (!generalInfo[0].email && !generalInfo[0].province && generalInfo[0].manucipality && 
+                  }else if (!generalInfo[0].email && !generalInfo[0].province && !generalInfo[0].manucipality && 
                     !generalInfo[0].street && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
             
                       generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"email": body}}, {"new": true, "upsert": true}, () =>{
@@ -175,7 +193,7 @@ app.post('/receive-message', (req, res) =>{
             
                         res.end();
                       })
-                    }else if (!generalInfo[0].province && generalInfo[0].manucipality && 
+                    }else if (!generalInfo[0].province && !generalInfo[0].manucipality && 
                       !generalInfo[0].street && !generalInfo[0].medicalAidName && !generalInfo[0].medicalAidNumber){
               
                         generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"province": body}}, {"new": true, "upsert": true}, () =>{
@@ -187,7 +205,7 @@ app.post('/receive-message', (req, res) =>{
               
                           res.end();
                         })
-                      }else if (generalInfo[0].manucipality && !generalInfo[0].street && !generalInfo[0].medicalAidName && 
+                      }else if (!generalInfo[0].manucipality && !generalInfo[0].street && !generalInfo[0].medicalAidName && 
                         !generalInfo[0].medicalAidNumber){
                 
                           generalInformation.findByIdAndUpdate(generalInfo[0]._id, {"$set": {"manucipality": body}}, {"new": true, "upsert": true}, () =>{
