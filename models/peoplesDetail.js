@@ -2,6 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const peoplesDetailSchema = new Schema({
+    contactDetails: {
+        phoneNumber: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String
+        }
+    },
     idNumber: {
         type: String,
         required: true
@@ -26,15 +35,6 @@ const peoplesDetailSchema = new Schema({
         type: String,
         required: true
     }, 
-    contactDetails: {
-        phoneNumber: {
-            type: String,
-            required: true
-        },
-        email: {
-            type: String
-        }
-    },
     address: {
         province: {
             type: String,
@@ -61,6 +61,26 @@ const peoplesDetailSchema = new Schema({
     }
 }, { timestamps: true});
 
-const PeoplesDetail = mongoose.model('PeoplesDetail', peoplesDetailSchema);
+const PeoplesDetailWhatsAppSchema = new mongoose.Schema({
+    phoneNumber: String,
+    idNumber: String,
+    passportNumber: String,
+    dateOfBirth: String,
+    firstName: String,
+    surname: String,
+    gender: String,
+    email: String,
+    province: String,
+    manucipality: String,
+    street: String,
+    medicalAidName: String,
+    medicalAidNumber: String
+  });
 
-module.exports = PeoplesDetail;
+//const PeoplesDetail = mongoose.model('PeoplesDetail', peoplesDetailSchema);
+
+//module.exports = PeoplesDetail;
+module.exports = {
+    peoplesDetailSchema,
+    PeoplesDetailWhatsAppSchema
+}

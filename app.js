@@ -5,10 +5,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require("body-parser");
 var mongoose = require('mongoose');
 var logger = require('morgan');
-//var PeoplesDetail = require('./models/peoplesDetail');
+var PeoplesDetail = require('./models/peoplesDetail');
 var twilio = require('twilio');
-var accountSid = 'AC0eb08a4c7a2cb53efa57a769d9987dad';
-var authToken = 'd97e706e41ee974b46861070fb25a5e1';
+var accountSid = 'ACfa02d88d08639259bf3efe03faf2fcba';
+var authToken = '0d714332a16768e0f586394e28466336';
 var client = new twilio(accountSid, authToken);
 
 var indexRouter = require('./routes/index');
@@ -19,30 +19,31 @@ var app = express();
 //Personal Details
 
 //only data that gets saved to db starts from id number up until gender
-const PeoplesDetail = new mongoose.Schema({
-  idNumber: String,
-  passportNumber: String,
-  dateOfBirth: String,
-  firstName: String,
-  surname: String,
-  gender: String,
-  contactDetails: {
-      phoneNumber: String,
-      email: String
-  },
-  address: {
-      province: String,
-      manucipality: String,
-      street: String
-  },
-  medicailAidDetails: {
-      medicalAidName: String,
-      medicalAidNumber: String
-  }
-});
+// const PeoplesDetail = new mongoose.Schema({
+//   idNumber: String,
+//   passportNumber: String,
+//   dateOfBirth: String,
+//   firstName: String,
+//   surname: String,
+//   gender: String,
+//   contactDetails: {
+//       phoneNumber: String,
+//       email: String
+//   },
+//   address: {
+//       province: String,
+//       manucipality: String,
+//       street: String
+//   },
+//   medicailAidDetails: {
+//       medicalAidName: String,
+//       medicalAidNumber: String
+//   }
+// });
 
 //all data gets saved to db
 // const PeoplesDetail = new mongoose.Schema({
+//     phoneNumber: String,
 //     idNumber: String,
 //     passportNumber: String,
 //     dateOfBirth: String,
@@ -58,7 +59,7 @@ const PeoplesDetail = new mongoose.Schema({
 //   });
   
 // connect to mongodb
-const dbURI = 'mongodb+srv://lindo:Apple123@cluster0.hokzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const dbURI = 'mongodb+srv://Person:Person4321@vaccineportal.fftn2.mongodb.net/VaccinePortal?retryWrites=true&w=majority'
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => app.listen(5000)) // listen for requests
     .catch((err) => console.log(err));
@@ -96,7 +97,7 @@ app.use(function(err, req, res, next) {
 
 //WhatsApp Chatbot
 
-let generalInformation = mongoose.model('generalInformation', PeoplesDetail);
+let generalInformation = mongoose.model('generalInformation', PeoplesDetail.PeoplesDetailWhatsAppSchema);
 // Still need to configure a webhook
 app.post('/receive-message', (req, res) =>{
   let from = req.body.From;
@@ -200,7 +201,7 @@ app.post('/receive-message', (req, res) =>{
                           client.messages.create({
                             to: `${from}`,
                             from: `${to}`,
-                            body: 'What manucipality you live in?'
+                            body: 'What city you live in?'
                           })
               
                           res.end();
