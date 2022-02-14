@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const peoplesDetailSchema = new Schema({
+const PeoplesDetailSchema = new Schema({
     contactDetails: {
         phoneNumber: {
             type: String,
@@ -81,6 +81,6 @@ const PeoplesDetailWhatsAppSchema = new mongoose.Schema({
 
 //module.exports = PeoplesDetail;
 module.exports = {
-    peoplesDetailSchema,
+    PeoplesDetailSchema,
     PeoplesDetailWhatsAppSchema
 }

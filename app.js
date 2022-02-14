@@ -8,7 +8,7 @@ var logger = require('morgan');
 var PeoplesDetail = require('./models/peoplesDetail');
 var twilio = require('twilio');
 var accountSid = 'ACfa02d88d08639259bf3efe03faf2fcba';
-var authToken = '0d714332a16768e0f586394e28466336';
+var authToken = '469057dd420aac27d5dd5b869754547e';
 var client = new twilio(accountSid, authToken);
 
 var indexRouter = require('./routes/index');
