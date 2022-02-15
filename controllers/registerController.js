@@ -1,5 +1,6 @@
 var express = require('express');
 var {body, validationResult} = require('express-validator');
+var mongoose = require('mongoose');
 var PeoplesDetail = require('../models/peoplesDetail');
 
 var router = express.Router();
@@ -45,7 +46,7 @@ exports.register_post = [
 ];
 
 exports.method_of_identification = function(req, res, next) {
-    res.render('IdOrPassport');
+    res.render('idOrPassport');
   };
 
  exports.general_info_get = function(req, res, next) {
@@ -168,11 +169,13 @@ exports.contact_details_get = function(req, res, next) {
     res.render('medicalAidDetails');
   };
 
+  let GeneralInformation = mongoose.model('GeneralInformation', PeoplesDetail.PeoplesDetailSchema);
+
   exports.person_details_post = [
       // code required for medical aid validation
       
     (req, res, next) => {
-        const peoplesDetail = new PeoplesDetail({
+        const NewGeneralInformation = new GeneralInformation({
             idNumber: IdNumber,
             passportNumber: PassportNumber,
             dateOfBirth: DateOfBirth,
@@ -193,7 +196,7 @@ exports.contact_details_get = function(req, res, next) {
                 medicalAidNumber: req.body.medicalAidNumber
             }
         });
-        peoplesDetail.save()
+        NewGeneralInformation.save()
         .then((result) => {
             res.redirect('/successful-registration');
         })
