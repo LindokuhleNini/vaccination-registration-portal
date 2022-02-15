@@ -7,8 +7,8 @@ var mongoose = require('mongoose');
 var logger = require('morgan');
 var PeoplesDetail = require('./models/peoplesDetail');
 var twilio = require('twilio');
-var accountSid = 'ACfa02d88d08639259bf3efe03faf2fcba';
-var authToken = '0d714332a16768e0f586394e28466336';
+var accountSid = 'AC0eb08a4c7a2cb53efa57a769d9987dad';
+var authToken = '4f281e32f3f98030c77cdb316c053dd7';
 var client = new twilio(accountSid, authToken);
 
 var indexRouter = require('./routes/index');
@@ -59,7 +59,7 @@ var app = express();
 //   });
   
 // connect to mongodb
-const dbURI = 'mongodb+srv://Person:Person4321@vaccineportal.fftn2.mongodb.net/VaccinePortal?retryWrites=true&w=majority'
+const dbURI = 'mongodb+srv://lindo:Apple123@cluster0.hokzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => app.listen(5000)) // listen for requests
     .catch((err) => console.log(err));
