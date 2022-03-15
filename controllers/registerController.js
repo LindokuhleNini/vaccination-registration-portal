@@ -53,6 +53,10 @@ exports.method_of_identification = function(req, res, next) {
    res.render('idForm')
 };  
 
+ exports.whatsapp_bot = function(req, res, next) {
+   res.render('whatsapp')
+};  
+
 /* POST form. */
 exports.general_info_post = [
 

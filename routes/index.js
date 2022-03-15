@@ -21,6 +21,8 @@ router.get('/method-of-identification', register_controller.method_of_identifica
 router.get('/id-form', register_controller.general_info_get);
 router.post('/id-form', urlencodedParser, register_controller.general_info_post)
 
+router.get('/whatsapp-chatbot', register_controller.whatsapp_bot);
+
 router.get('/contact-details', register_controller.contact_details_get);
 router.post('/contact-details', urlencodedParser, register_controller.contact_details_post);
 

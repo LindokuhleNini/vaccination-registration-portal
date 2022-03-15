@@ -8,7 +8,7 @@ var logger = require('morgan');
 var PeoplesDetail = require('./models/peoplesDetail');
 var twilio = require('twilio');
 var accountSid = 'AC0eb08a4c7a2cb53efa57a769d9987dad';
-var authToken = '4f281e32f3f98030c77cdb316c053dd7';
+var authToken = 'db040379cd66eadfc6d75e6c390b5451';
 var client = new twilio(accountSid, authToken);
 
 var indexRouter = require('./routes/index');
@@ -61,7 +61,7 @@ var app = express();
 // connect to mongodb
 const dbURI = 'mongodb+srv://lindo:Apple123@cluster0.hokzp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then((result) => app.listen(5000)) // listen for requests
+    .then((result) => app.listen(5500)) // listen for requests
     .catch((err) => console.log(err));
     console.log("DB and server Connected");
 
@@ -260,7 +260,7 @@ app.post('/receive-message', (req, res) =>{
           client.messages.create({
             to: `${from}`,
             from: `${to}`,
-            body: 'What is your ID number?'
+            body: 'What is your id number'
           })
 
           res.end();
